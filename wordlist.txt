@@ -1,0 +1,10 @@
+caber
+sword
+arrow
+trees
+mouse
+drink
+apple
+phone
+house
+child
