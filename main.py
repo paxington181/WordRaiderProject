@@ -2,11 +2,9 @@ import random
 
 title:str = "Word Raider"
 words:str = []
-wrong_place:str = []
-wrong_let:str = []
-correct_let:str = []
 max_turn:int = 5
 solution:str = " "
+wrong_let:str = []
 
 def main():
     print(f"Welcome to {title}!")
@@ -18,7 +16,7 @@ def main():
     letters = list(solution)
     print(solution)
     print(f"Your word has {len(solution)} letters!  Good luck!")
-    print(" ")
+    print("  ")
     turn_number:int = 0
     while turn_number < (max_turn + 1):
         if turn_number == 5:
@@ -39,19 +37,22 @@ def main():
             print("Correct! You win!")
             break
         else:
-            for g in guess_letters:
-                for l in letters:
-                    if l == g and letters.index(l) == guess_letters.index(g):
-                        correct_let.append(g)
-                    elif l == g and letters.index(l) != guess_letters.index(g):
-                        wrong_place.append(g)
-                    elif l != g:
-                        wrong_let.append(g)
+            wrong_place:str = []
+            correct_let:str = []
+            temp_letters = letters.copy()  # Create a temporary copy of the solution letters
+            for i, g in enumerate(guess_letters):
+                if g == temp_letters[i]:  # Correct letter in the correct place
+                    correct_let.append(g)
+                    temp_letters[i] = None  # Mark the letter as used
+                elif g in temp_letters:  # Correct letter in the wrong place
+                    wrong_place.append(g)
+                    temp_letters[temp_letters.index(g)] = None  # Mark the letter as used
+                else:  # Letter not in the word
+                    wrong_let.append(g)
             print(f"Correct letters in correct place: {correct_let}")
-            print(f"Correct letters in the wrong place: {set(wrong_place)}")
+            print(f"Correct letters in the wrong place: {wrong_place}")
             print(f"Letters not in the word: {set(wrong_let)}")
             print(" ")
-            turn_number += 1
-    
+            turn_number += 1    
 
 main()
