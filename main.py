@@ -1,6 +1,6 @@
 import random
 
-title:str = "Word Raider"
+title:str = "Word Finder"
 words:str = []
 solution:str = " "
 wrong_let:str = []
@@ -29,9 +29,9 @@ def main():
         guess.lower()
         guess_letters = list(guess)
         if len(guess) != len(solution):
-            print("Incorrect word length, try again")
+            print("Incorrect word length, please try again.")
         elif guess.isalpha() is False:
-            print("Please enter only letters.")
+            print("Please only enter letters.")
         elif guess == solution:
             print("Correct! You win!")
             break
