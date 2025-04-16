@@ -1,0 +1,1 @@
+Edit wordlist.txt to add words you want to include in the possible solutions.  One word per line, only alphabetic.  Using numbers or symbols will cause problems.
